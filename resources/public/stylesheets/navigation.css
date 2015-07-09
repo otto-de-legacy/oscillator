@@ -1,0 +1,43 @@
+nav.top {
+    clear: both;
+    float: right;
+    margin-bottom: 10px;
+}
+
+nav.top ul {
+    float: right;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+nav.top ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav.top ul span.descr {
+    font-size: 80%;
+}
+
+nav.side {
+    float: left;
+    height: 100%;
+    width: 40px;
+    overflow: visible;
+}
+
+nav.side.right {
+    float:right;
+    width: 40px;
+}
+
+nav.side ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav.side ul li {
+    margin: 20px 0 0;
+}

@@ -1,0 +1,91 @@
+.rickshaw_annotation_timeline {
+    height: 1px;
+    border-top: 1px solid #2980b9;
+    margin: 5px 0;
+    position: relative;
+}
+
+.rickshaw_annotation_timeline .annotation {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    margin-left: 0px;
+    top: -5px;
+    border-radius: 5px;
+    background-color: rgba(41, 128, 185, 0.8);
+}
+
+.rickshaw_graph .annotation_line {
+    position: absolute;
+    top: 0;
+    bottom: -6px;
+    width: 0px;
+    border-left: 2px solid rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.rickshaw_graph .annotation_line.active {
+    display: block;
+}
+
+.rickshaw_graph .annotation_range {
+    background: rgba(0, 0, 0, 0.1);
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: -6px;
+}
+
+.rickshaw_graph .annotation_range.active {
+    display: block;
+}
+
+.rickshaw_graph .annotation_range.active.offscreen {
+    display: none;
+}
+
+.rickshaw_annotation_timeline .annotation .content {
+    background: #1abc9c;
+    color: #ecf0f1;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+    border: 1px solid #16a085;
+    border-radius: 3px;
+    position: relative;
+    z-index: 20;
+    font-size: 12px;
+    text-align: right;
+    padding: 6px 8px 8px;
+    top: 18px;
+    left: -151px;
+    width: 160px;
+    display: none;
+    cursor: pointer;
+}
+
+.rickshaw_annotation_timeline .annotation .content:before {
+    content: "\25b2";
+    position: absolute;
+    top: -11px;
+    left: 149px;
+    color: #1abc9c;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.rickshaw_annotation_timeline .annotation.active,
+.rickshaw_annotation_timeline .annotation:hover {
+    background-color: #16a085;
+    cursor: none;
+}
+
+.rickshaw_annotation_timeline .annotation .content:hover {
+    z-index: 50;
+}
+
+.rickshaw_annotation_timeline .annotation.active .content {
+    display: block;
+}
+
+.rickshaw_annotation_timeline .annotation:hover .content {
+    display: block;
+    z-index: 50;
+}

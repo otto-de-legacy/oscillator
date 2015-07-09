@@ -1,0 +1,89 @@
+.button {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+
+    color: gray;
+    background-color: #2c3e50;
+    border: 5px solid gray;
+    border-radius: 10px;
+
+    font-size: 22px;
+    text-decoration: none;
+
+    line-height: 33px;
+    text-align: center;
+
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box;
+
+    opacity: 0.5;
+}
+
+.button.back {
+    color: #3498db;
+    border-color: #3498db;
+}
+
+nav ul li a.active {
+    font-weight: 800;
+    opacity: 1;
+}
+
+nav ul.page li a {
+    color: #2ecc71;
+    border-color: #2ecc71;
+}
+nav ul.page li a.active {
+    color: #2c3e50;
+    background-color: #2ecc71;
+}
+
+nav ul.resolution li a {
+    color: #3498db;
+    border-color: #3498db;
+}
+nav ul.resolution li a.active {
+    color: #2c3e50;
+    background-color: #3498db;
+}
+
+nav ul.environment li a {
+    color: #1abc9c;
+    border-color: #1abc9c;
+}
+nav ul.environment li a.active {
+    color: #2c3e50;
+    background-color: #1abc9c;
+}
+
+nav ul.ymax-mode li a {
+    color: #f39c12;
+    border-color: #f39c12;
+}
+nav ul.ymax-mode li a.active {
+    color: #2c3e50;
+    background-color: #f39c12;
+}
+nav ul.ymax-mode .descr {
+    color: #f39c12;
+}
+
+nav ul.time li a {
+    color: #3498db;
+    border-color: #3498db;
+}
+nav ul.time li a.active {
+    color: #2c3e50;
+    background-color: #3498db;
+}
+
+
+nav.side .button {
+    width: 40px;
+    height: 100px;
+
+    line-height: 100px;
+}
