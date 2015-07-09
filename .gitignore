@@ -5,6 +5,7 @@ pom.xml.asc
 /lib/
 /classes/
 /target/
+/resources/public/javascript/gen/
 /checkouts/
 .lein-deps-sum
 .lein-repl-history
