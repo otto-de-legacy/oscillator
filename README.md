@@ -20,7 +20,7 @@ You set up a small Ring/Compojure application, that will hold your *oscillator*.
 
 Add the following dependency to your project.clj file:
 
-`[de.otto/oscillator "0.1.0"]`
+`[de.otto/oscillator "0.2.0"]`
 
 
 ### Building Routes
