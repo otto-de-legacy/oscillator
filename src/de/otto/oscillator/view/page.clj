@@ -4,9 +4,9 @@
             [de.otto.oscillator.view.component :as vc]))
 
 (def build-in-pages
-  {:detail {:url     "/detail"
-            :heading ""
-            :type    :detail}})
+  [{:url     "/detail"
+    :heading ""
+    :type    :detail}])
 
 (defn- chart-def [chart-def-lookup-fun chart-name env]
   ((keyword chart-name) (chart-def-lookup-fun env)))
@@ -31,14 +31,14 @@
                (vc/rickshaw-svg page-config chart-def annotation-event-targets url-params)
                (vc/plain-graphite-link page-config chart-def url-params)])))
 
-(defn- page-route [page-config chart-def-lookup-fun annotation-event-targets [page-type page]]
+(defn- page-route [page-config chart-def-lookup-fun annotation-event-targets page]
   (compojure/GET (:url page) {params :params}
     (let [url-params (merge (:default-params page-config) params)
           content (build-page page page-config chart-def-lookup-fun annotation-event-targets url-params)]
       (layout/common :heading (:heading page)
                      :pages (:pages page-config)
                      :environments (:environments page-config)
-                     :page-type page-type
+                     :page-identifier (:url page)
                      :url-params url-params
                      :add-css-files (:add-css-files page-config)
                      :add-js-files (:add-js-files page-config)
@@ -47,4 +47,4 @@
 (defn page-routes [page-config chart-def-lookup-fun annotation-event-targets]
   (map
     (partial page-route page-config chart-def-lookup-fun annotation-event-targets)
-    (merge (:pages page-config) build-in-pages)))
+    (concat (:pages page-config) build-in-pages)))

@@ -3,11 +3,11 @@
             [de.otto.oscillator.view.navigation :as link]
             [de.otto.oscillator.util.graphite-url :as url]))
 
-(defn- page-navigation [pages-def current-page-type url-params]
+(defn- page-navigation [pages-def page-identifier url-params]
   [:ul {:class "page"}
-   (for [[page-type page] pages-def]
+   (for [page pages-def]
      [:li (link/page-link :path (:url page)
-                          :is-active (= page-type current-page-type)
+                          :is-active (= (:url page) page-identifier)
                           :url-params url-params
                           :title (:name page))])])
 
@@ -16,10 +16,10 @@
    (for [environment environments]
      [:li (link/nav-link url-params {:env (:key environment)} (:name environment))])])
 
-(defn- main-navigation [pages-def environments-def current-page-type url-params]
+(defn- main-navigation [pages-def environments-def page-identifier url-params]
   [:nav {:class "top"}
    (env-navigation environments-def url-params)
-   (page-navigation pages-def current-page-type url-params)
+   (page-navigation pages-def page-identifier url-params)
    [:ul {:class "resolution"}
     [:li [:span {:class "descr"} "DATA RES:"]]
     [:li (link/nav-link url-params {:resolution "1min"} "1MIN")]
@@ -65,7 +65,7 @@
    "/javascript/vendor/rickshaw.js"
    "/javascript/gen/oscillator.js"])
 
-(defn common [& {:keys [title pages environments page-type add-js-files add-css-files url-params content]}]
+(defn common [& {:keys [title pages environments page-identifier add-js-files add-css-files url-params content]}]
   (h/html5
     [:head
      [:meta {:charset "utf-8"}]
@@ -75,7 +75,7 @@
      (apply h/include-css (flatten (conj css-files add-css-files)))
      (apply h/include-js (flatten (conj js-files add-js-files)))]
     [:body
-     (main-navigation pages environments page-type url-params)
+     (main-navigation pages environments page-identifier url-params)
      [:header
       [:h1 {:class "container"} title]]
      (time-navigation-from url-params)
