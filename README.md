@@ -58,34 +58,36 @@ Pages are collections of `tiles`, that can be accessed under a given `url`. Each
 page will get a button in the navigation bar. Currently there are 4 different types of tiles 
 supported: `chart`, `image`, `number`, `plain-html` 
 
-Pages are defined in a structure like this:
+Pages are defined in a list of hash-maps like this:
 ```edn
-{:index  {:name    "INDEX"
-          :heading "Overview"
-          :url     "/"
-          :type    :dashboard
-          :tiles   [{:type   :chart
-                     :params {:chart-name :request-count}}
-                    {:type   :chart
-                     :params {:chart-name :request-timing}}
-                    {:type   :chart
-                     :params {:chart-name :exceptions-count}}
-                    {:type   :image
-                     :params {:src     "nikola-tesla.png"
-                              :heading "NIKOLA TESLA"}}
-                    {:type   :number
-                     :params {:heading "Awesomeness"
-                              :descr   "OVER"
-                              :num     9000}}
-                    {:type   :plain-html
-                     :params [:div {:class "col"}
-                              [:h2 "CUSTOM HTML"]
-                              [:span "simply use hiccup"]]}]}
- :jvm-stats {:name  "JVM"
-             :heading "JVM Stats"
-             :url     "/"
-             :type    :dashboard
-             :tiles   [...]}}
+[
+ {:name    "INDEX"
+  :heading "Overview"
+  :url     "/"
+  :type    :dashboard
+  :tiles   [{:type   :chart
+             :params {:chart-name :request-count}}
+            {:type   :chart
+             :params {:chart-name :request-timing}}
+            {:type   :chart
+             :params {:chart-name :exceptions-count}}
+            {:type   :image
+             :params {:src     "nikola-tesla.png"
+                      :heading "NIKOLA TESLA"}}
+            {:type   :number
+             :params {:heading "Awesomeness"
+                      :descr   "OVER"
+                      :num     9000}}
+            {:type   :plain-html
+             :params [:div {:class "col"}
+                      [:h2 "CUSTOM HTML"]
+                      [:span "simply use hiccup"]]}]}
+ {:name  "JVM"
+  :heading "JVM Stats"
+  :url     "/"
+  :type    :dashboard
+  :tiles   [...]}}
+]
 ```
 
 #### Replace Rules
