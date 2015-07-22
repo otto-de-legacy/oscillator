@@ -11,19 +11,17 @@ to monitor your applications in multiple environments.
 
 This library was developed with Graphite as a data provider in mind.
 
+## Status
+
+[![Clojars Project](http://clojars.org/de.otto/oscillator/latest-version.svg)](http://clojars.org/de.otto/oscillator)
 
 ## Usage
 
-You set up a small Ring/Compojure application, that will hold your *oscillator*.
-
-### Installation
-
-Add the following dependency to your project.clj file:
-
-`[de.otto/oscillator "0.2.0"]`
-
+You have to set up a small Ring/Compojure application, that will hold your *oscillator*.
 
 ### Building Routes
+
+Building the required routes is easy:
 
 ```Clojure
 ;; building compojure routes for your dashboard
