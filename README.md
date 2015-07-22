@@ -127,7 +127,7 @@ Each chart can hold multiple targets (data series in the graph). Each data serie
 has a `key` (used as name) and a `target` (a graphite query). Additional attributes
 can be defined: `color`, `renderer`
 
-```
+```clojure
 (defn chart-definitions [env]
   {:request-count  {:targets {:request-count   {:target   (req-count-target)
                                                 :color    "#0000ff"}
