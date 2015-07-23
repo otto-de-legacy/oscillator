@@ -11,11 +11,10 @@ to monitor your applications in multiple environments.
 
 This library was developed with Graphite as a data provider in mind.
 
-## Status
+[![Build Status](https://travis-ci.org/otto-de/oscillator.svg?branch=master)](https://travis-ci.org/otto-de/oscillator)
+## Usage
 
 [![Clojars Project](http://clojars.org/de.otto/oscillator/latest-version.svg)](http://clojars.org/de.otto/oscillator)
-
-## Usage
 
 You have to set up a small Ring/Compojure application, that will hold your *oscillator*.
 
