@@ -42,6 +42,7 @@
                :renderer      "multi"
                :interpolation (.getAttribute el "data-interpolation")
                :stroke        true
+               :min           (.getAttribute el "data-min")
                :max           (.getAttribute el "data-max")
                :height        (.getAttribute el "data-height")
                :dataURL       (.getAttribute el "data-url")

@@ -16,6 +16,7 @@
   (let [transformed-chart-def (chart-definition chart-def url-params)]
     [:div {:class              "chart_container"
            :data-url           (url/json-url page-config transformed-chart-def)
+           :data-min           (transformed-chart-def :yMin)
            :data-max           (transformed-chart-def :yMax)
            :data-interpolation (transformed-chart-def :interpolation "cardinal")
            :data-height        (if (url-params :detail) 750 200)
