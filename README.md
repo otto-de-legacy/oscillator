@@ -34,7 +34,7 @@ You just have to provide some information about the page and what charts should 
 ### Page Config
 
 ```Clojure
-{:base-url       "http://graphite.example.com/render/" ;; your graphite server
+{:base-url       "http://graphite.example.com/"        ;; your graphite server
  :pages          {...}                                 ;; see -> Pages
  :environments   [{:key "dev" :name "DEV"}
                   {:key "pre-prod" :name "PRE"}

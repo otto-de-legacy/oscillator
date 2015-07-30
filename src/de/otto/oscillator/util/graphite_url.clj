@@ -16,10 +16,10 @@
 
 (defn build-url [page-config chart additional-params]
   (let [escaped-params (r/replace-envs-in-params (:replace-rules page-config) chart)]
-    (str (:base-url page-config) "?" (-> escaped-params
-                                         (select-keys [:target :from :until])
-                                         (merge additional-params)
-                                         (param-string)))))
+    (str (:base-url page-config) "render/?" (-> escaped-params
+                                                (select-keys [:target :from :until])
+                                                (merge additional-params)
+                                                (param-string)))))
 
 (defn json-url [page-config chart]
   (build-url page-config chart {:format "json"}))
