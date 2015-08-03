@@ -24,7 +24,7 @@
      [:div {:class "y_axis"}]
      [:div {:class "chart"}]
      [:div {:class "x_axis"}]
-     (if (url-params :detail)
+     (if (and (url-params :detail) annotation-event-targets)
        [:div {:class             "timeline"
               :data-graphite-url (url/json-url page-config {:target annotation-event-targets
                                                             :env    (:env url-params)})}]
