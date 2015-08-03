@@ -24,8 +24,8 @@ Building the required routes is easy:
 
 ```Clojure
 ;; building compojure routes for your dashboard
-(oscillator-routes :page-config your-page-config
-                   :chart-def-fetch-fun get-chart-definitions) 
+(oscillator-routes :page-config               your-page-config
+                   :chart-def-fetch-fun       get-chart-definitions) 
 ```
 
 Dashboards, navigation, charts, detail views ... everything will be rendered for you.
@@ -35,7 +35,7 @@ You just have to provide some information about the page and what charts should 
 
 ```Clojure
 {:base-url       "http://graphite.example.com/"        ;; your graphite server
- :pages          {...}                                 ;; see -> Pages
+ :pages          [...]                                 ;; see -> Pages
  :environments   [{:key "dev" :name "DEV"}
                   {:key "pre-prod" :name "PRE"}
                   {:key "production" :name "PROD"}]
@@ -146,13 +146,18 @@ so you don't have to write those hard to maintain string-monsters.
 
 Some examples:
 ```Clojure
-(dsl/sum-series 
-  (dsl/non-negative-derivative "app-serv-#{env}.request.count"))
-(dsl/keep-last-value 
-  (dsl/max-series "app-serv-#{env}.*.metrics.stats.offset"))
-(dsl/diff-series
-   (some-target)
-   (some-other-target))
+(defn req-count-target []
+  (dsl/sum-series 
+    (dsl/non-negative-derivative "app-serv-#{env}.request.count")))
+    
+(defn bounces-target []
+  (dsl/keep-last-value 
+    (dsl/max-series "app-serv-#{env}.*.metrics.stats.offset")))
+    
+(defn reuse-example []    
+  (dsl/diff-series
+    (req-count-target)
+    (bounces-target)))
 ```
 
 ### Annotations
