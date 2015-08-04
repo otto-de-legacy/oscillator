@@ -27,7 +27,8 @@ Building the required routes is easy:
 ```Clojure
 ;; building compojure routes for your dashboard
 (oscillator-routes :page-config               your-page-config
-                   :chart-def-fetch-fun       get-chart-definitions) 
+                   :chart-def-fetch-fun       get-chart-definitions
+                   :annotation-event-targets  []) 
 ```
 
 Dashboards, navigation, charts, detail views ... everything will be rendered for you.
@@ -164,7 +165,20 @@ Some examples:
 
 ### Annotations
 
-(will be added soon)
+There are events, that can significantly influence your systems (e.g. deployments, reboots, etc.). To
+be able to see which anomaly in your chart correlates with which event, you can provide a list of
+*Graphite-Targets* that will be used for event annotation for your charts.
+
+You can provide this list of `annotation-event-targets` while setting up your routes:
+
+```Clojure
+(oscillator-routes :page-config               your-page-config
+                   :chart-def-fetch-fun       get-chart-definitions
+                   :annotation-event-targets  [(dsl/aliaz "deployments.#{env}.count" "Deployment")
+                                               (dsl/aliaz "chaos-monkey.#{env}.count" "Chaos Monkey"]) 
+```
+
+Annotation will be shown below all charts on detail pages.
 
 
 ## Plans for the future
