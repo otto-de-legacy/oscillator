@@ -7,7 +7,7 @@
 
 (defn annotation-text [t target]
   (str (.toLocaleString (js/Date. (* t 1000)) "de-DE" (clj->js date-format))
-       ":<br/>Deployment " target))
+       ":<br/>" target))
 
 (defn dp->deployment [row]
   (->> (:datapoints row)
