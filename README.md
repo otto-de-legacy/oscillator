@@ -11,6 +11,8 @@ to monitor your applications in multiple environments.
 
 This library was developed with Graphite as a data provider in mind.
 
+![Example Dashboard with charts, custom tiles, images and numbers](doc/oscillator.png)
+
 [![Build Status](https://travis-ci.org/otto-de/oscillator.svg?branch=master)](https://travis-ci.org/otto-de/oscillator)
 ## Usage
 
