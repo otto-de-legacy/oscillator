@@ -169,6 +169,8 @@ There are events, that can significantly influence your systems (e.g. deployment
 be able to see which anomaly in your chart correlates with which event, you can provide a list of
 *Graphite-Targets* that will be used for event annotation for your charts.
 
+![Example Detail-Page with Annotations](doc/detail-page.png)
+
 You can provide this list of `annotation-event-targets` while setting up your routes:
 
 ```Clojure
