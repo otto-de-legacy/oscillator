@@ -175,7 +175,7 @@ You can provide this list of `annotation-event-targets` while setting up your ro
 (oscillator-routes :page-config               your-page-config
                    :chart-def-fetch-fun       get-chart-definitions
                    :annotation-event-targets  [(dsl/aliaz "deployments.#{env}.count" "Deployment")
-                                               (dsl/aliaz "chaos-monkey.#{env}.count" "Chaos Monkey"]) 
+                                               (dsl/aliaz "chaos-monkey.#{env}.count" "Chaos Monkey")]) 
 ```
 
 Annotation will be shown below all charts on detail pages.
