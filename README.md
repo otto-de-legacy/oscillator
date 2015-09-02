@@ -56,7 +56,7 @@ You just have to provide some information about the page and what charts should 
 
 Pages are collections of `tiles`, that can be accessed under a given `url`. Each configured
 page will get a button in the navigation bar. Currently there are 4 different types of tiles 
-supported: `chart`, `image`, `number`, `plain-html` 
+supported: `chart`, `image`, `number`, `plain-html`, `html-fn` 
 
 Pages are defined in a list of hash-maps like this:
 ```edn
@@ -74,6 +74,8 @@ Pages are defined in a list of hash-maps like this:
             {:type   :image
              :params {:src     "nikola-tesla.png"
                       :heading "NIKOLA TESLA"}}
+            {:type   :html-fn
+             :params (fn [] [:div [:h2 "CUSTOM HTML"]])}
             {:type   :number
              :params {:heading "Awesomeness"
                       :descr   "OVER"

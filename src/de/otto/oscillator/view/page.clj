@@ -11,14 +11,15 @@
 (defn- chart-def [chart-def-lookup-fun chart-name env]
   ((keyword chart-name) (chart-def-lookup-fun env)))
 
-(defn- build-tile [tile page-config chart-def-lookup-fun url-params]
-  (case (:type tile)
-    :chart (let [chart-name (get-in tile [:params :chart-name])
+(defn- build-tile [{:keys [type params]} page-config chart-def-lookup-fun url-params]
+  (case type
+    :chart (let [chart-name (:chart-name params)
                  chart-def (chart-def chart-def-lookup-fun chart-name (:env url-params))]
              (vc/link-to-chart page-config chart-def chart-name url-params))
-    :image (vc/image (tile :params))
-    :number (vc/number (tile :params))
-    :plain-html (tile :params)))
+    :image (vc/image params)
+    :number (vc/number params)
+    :plain-html params
+    :html-fn (params)))
 
 (defn- build-page [page page-config chart-def-lookup-fun annotation-event-targets url-params]
   (case (:type page)
