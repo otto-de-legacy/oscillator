@@ -5,7 +5,7 @@
 (deftest rendering-of-page-tiles
   (testing "should render html-fn"
     (let [a-tile-config {:type   :html-fn
-                         :params (fn [] [:div "Some random HTML"])}]
+                         :params (fn [_ _] [:div "Some random HTML"])}]
       (is (= [:div "Some random HTML"]
              (#'page/build-tile a-tile-config nil nil nil)))))
 
@@ -40,7 +40,7 @@
   (testing "should evalute html-fn with every request"
     (let [counter (atom 0)
           a-tile-config {:type   :html-fn
-                         :params (fn [] [:div (str "Some random HTML - " @counter)])}]
+                         :params (fn [_ _] [:div (str "Some random HTML - " @counter)])}]
       (is (= [:div "Some random HTML - 0"]
              (#'page/build-tile a-tile-config nil nil nil)))
       (swap! counter inc)

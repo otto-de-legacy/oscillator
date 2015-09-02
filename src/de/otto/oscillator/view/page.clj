@@ -19,7 +19,7 @@
     :image (vc/image params)
     :number (vc/number params)
     :plain-html params
-    :html-fn (params)))
+    :html-fn (params page-config url-params)))
 
 (defn- build-page [page page-config chart-def-lookup-fun annotation-event-targets url-params]
   (case (:type page)
