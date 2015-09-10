@@ -1,4 +1,4 @@
-(defproject de.otto/oscillator "0.2.6"
+(defproject de.otto/oscillator "0.2.7"
             :description "A Clojure library that lets you create dashboards with
                          interactive charts to monitor applications in multiple environments."
             :url "https://github.com/otto-de/oscillator"
@@ -19,7 +19,7 @@
                                                       :optimizations :whitespace
                                                       :pretty-print  true}}}}
             :hooks [leiningen.cljsbuild]
-            :profiles {:provided {:dependencies [[org.clojure/clojurescript "0.0-3308"]
+            :profiles {:provided {:dependencies [[org.clojure/clojurescript "1.7.48"]
                                                  [cljs-ajax "0.3.13"]
                                                  [prismatic/dommy "1.1.0"]
                                                  [hipo "0.4.0"]]}

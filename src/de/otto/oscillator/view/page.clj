@@ -36,7 +36,7 @@
   (compojure/GET (:url page) {params :params}
     (let [url-params (merge (:default-params page-config) params)
           content (build-page page page-config chart-def-lookup-fun annotation-event-targets url-params)]
-      (layout/common :heading (:heading page)
+      (layout/common :title (:heading page)
                      :pages (:pages page-config)
                      :environments (:environments page-config)
                      :page-identifier (:url page)

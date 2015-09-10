@@ -14,6 +14,10 @@ header {
     clear: both;
 }
 
+header h1 {
+    text-align: center;
+}
+
 section {
     /*float: left;*/
     width: 100%;
