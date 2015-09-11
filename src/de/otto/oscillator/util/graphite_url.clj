@@ -32,9 +32,9 @@
         parsed-num (re-find #"-?\d+(?=h)" str-to-parse)]
     (read-string (or parsed-num "0"))))
 
-(defn move-time [current-str f operand]
+(defn move-time [current-str operand]
   (let [current-hours (parse-hours current-str)
-        result (f current-hours operand)]
+        result (+ current-hours operand)]
     (if (> result -1)
       "-1min"
       (str result "h"))))

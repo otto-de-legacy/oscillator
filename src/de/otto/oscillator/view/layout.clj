@@ -33,21 +33,28 @@
 
 (defn- time-navigation-from [url-params]
   [:nav {:class "side"}
+   [:span {:class "currenttime"} "FROM"]
    [:ul {:class "time"}
-    [:li (link/nav-link-without-state url-params {:from (url/move-time (:from url-params) - 24)} "<<")]
-    [:li (link/nav-link-without-state url-params {:from (url/move-time (:from url-params) - 1)} "<")]
-    [:li (link/nav-link url-params {:from "-6h"} "6h")]
-    [:li (link/nav-link-without-state url-params {:from (url/move-time (:from url-params) + 1)} ">")]
-    [:li (link/nav-link-without-state url-params {:from (url/move-time (:from url-params) + 24)} ">>")]]])
+    [:li (link/nav-link-scroll-button url-params :from -24 "<<")]
+    [:li (link/nav-link-scroll-button url-params :from -1 "<")]
+    [:li (link/time-display (:from url-params))]
+    [:li (link/nav-link-scroll-button url-params :from +1 ">")]
+    [:li (link/nav-link-scroll-button url-params :from +24 ">>")]
+
+    [:li (link/nav-link-vertical-button url-params {:from "-6h"} "-6h")]
+    [:li (link/nav-link-vertical-button url-params {:from "-24h"} "-24h")]]])
 
 (defn- time-navigation-until [url-params]
   [:nav {:class "side right"}
+   [:span {:class "currenttime"} "UNTIL"]
    [:ul {:class "time"}
-    [:li (link/nav-link-without-state url-params {:until (url/move-time (:until url-params) + 24)} ">>")]
-    [:li (link/nav-link-without-state url-params {:until (url/move-time (:until url-params) + 1)} ">")]
-    [:li (link/nav-link url-params {:until "-1min"} "0")]
-    [:li (link/nav-link-without-state url-params {:until (url/move-time (:until url-params) - 1)} "<")]
-    [:li (link/nav-link-without-state url-params {:until (url/move-time (:until url-params) - 24)} "<<")]]])
+    [:li (link/nav-link-scroll-button url-params :until +24 ">>")]
+    [:li (link/nav-link-scroll-button url-params :until +1 ">")]
+    [:li (link/time-display (:until url-params))]
+    [:li (link/nav-link-scroll-button url-params :until -1 "<")]
+    [:li (link/nav-link-scroll-button url-params :until -24 "<<")]
+
+    [:li (link/nav-link-vertical-button url-params {:until "-1min"} "0")]]])
 
 (def css-files
   ["/stylesheets/rickshaw/layout.css"
@@ -77,10 +84,10 @@
     [:body
      (main-navigation pages environments page-identifier url-params)
      [:header
-      [:h1 {:class "container"} title]]
+      [:h1 title]]
      (time-navigation-from url-params)
      (time-navigation-until url-params)
      [:article {:id "content"} content]
      [:footer
       [:div "Made with ♥ by TESLA"]
-      [:div (prn-str url-params)]]]))
+      [:div (str url-params)]]]))

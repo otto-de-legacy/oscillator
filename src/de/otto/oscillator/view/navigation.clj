@@ -7,13 +7,27 @@
 (defn nav-link-url [current-params new-params]
   (str "?" (url/param-string (merge current-params new-params))))
 
+(defn time-display [title]
+  [:div {:class "button active"}
+   [:div {:class "vertical"} title]])
+
 (defn nav-link [current-params new-params title]
   [:a {:href  (nav-link-url current-params new-params)
        :class (if (params-active? current-params new-params) "button active" "button")} title])
 
-(defn nav-link-without-state [current-params new-params title]
+(defn- broaden? [side]
+  (if (= side :from) neg? pos?))
+
+(defn nav-link-scroll-button [current-params side delta title]
+  [:a {:href  (nav-link-url current-params {side (url/move-time (side current-params) delta)})
+       :class "button scroll"
+       :title (str (if ((broaden? side) delta) "BROADEN" "NARROW") " BY " delta "h")} title])
+
+(defn nav-link-vertical-button [current-params new-params title]
   [:a {:href  (nav-link-url current-params new-params)
-       :class "button"} title])
+       :class "button time"
+       :title (str "JUMP TO " title)}
+   [:div {:class "vertical"} title]])
 
 (defn page-link [& {:keys [path is-active url-params title]}]
   (let [current-params (select-keys url-params [:resolution :env :from :until :ymax-mode])]

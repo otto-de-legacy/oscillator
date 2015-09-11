@@ -27,7 +27,21 @@
     border-color: #3498db;
 }
 
-nav ul li a.active {
+.button .vertical {
+    width: 100px;
+    line-height: normal;
+    -webkit-transform-origin: top left;
+    -moz-transform-origin: top left;
+    -o-transform-origin: top left;
+    -webkit-transform:rotate(-90deg) translate(-100px,3px);
+    -moz-transform:rotate(-90deg) translate(-100px,3px);
+    -o-transform: rotate(-90deg) translate(-100px,3px);
+}
+
+.button.scroll {
+}
+
+nav ul li .button.active {
     font-weight: 800;
     opacity: 1;
 }
@@ -71,13 +85,21 @@ nav ul.ymax-mode .descr {
     color: #f39c12;
 }
 
-nav ul.time li a {
+nav ul.time li .button {
     color: #3498db;
     border-color: #3498db;
 }
-nav ul.time li a.active {
+nav ul.time li .button.active {
     color: #2c3e50;
     background-color: #3498db;
+}
+nav ul.time li .button.time {
+    color: #9b59b6;
+    border-color: #9b59b6;
+}
+nav ul.time li .button.active.time {
+    color: #2c3e50;
+    background-color: #9b59b6;
 }
 
 
