@@ -79,6 +79,9 @@
      [:meta {:http-equiv "X-UA-Compatible"
              :content    "IE=edge,chrome=1"}]
      [:title title]
+     [:link {:rel "icon" :type "image/png" :sizes "32x32" :href "/favicon-32x32.png"}]
+     [:link {:rel "icon" :type "image/png" :sizes "96x96" :href "/favicon-96x96.png"}]
+     [:link {:rel "icon" :type "image/png" :sizes "16x16" :href "/favicon-16x16.png"}]
      (apply h/include-css (flatten (conj css-files add-css-files)))
      (apply h/include-js (flatten (conj js-files add-js-files)))]
     [:body
