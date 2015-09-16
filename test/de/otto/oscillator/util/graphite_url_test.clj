@@ -21,22 +21,22 @@
 (deftest move-time-test
   (testing "it applies a given function"
     (is (= "-4h"
-           (move-time "-6h" + 2)))
+           (move-time "-6h" 2)))
     (is (= "-1h"
-           (move-time "-2h" + 1)))
+           (move-time "-2h" 1)))
     (is (= "-24h"
-           (move-time "24h" - 48))))
+           (move-time "24h" -48))))
   (testing "it does not crash if current-time is missing"
     (is (= "-4h"
-           (move-time "" - 4)))
+           (move-time "" -4)))
     (is (= "-4h"
-           (move-time "30m" - 4)))
+           (move-time "30m" -4)))
     (is (= "-4h"
-           (move-time nil - 4))))
+           (move-time nil -4))))
   (testing "positive results will be mapped to -1min"
     (is (= "-1min"
-           (move-time "" + 0)
-           (move-time "-1h" + 2)))))
+           (move-time "" 0)
+           (move-time "-1h" 2)))))
 
 (deftest parse-hours-test
   (testing "it finds hours within string"
