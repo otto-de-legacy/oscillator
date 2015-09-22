@@ -27,3 +27,6 @@
 
 (defn keep-last-value [target]
   (str "keepLastValue(" target ")"))
+
+(defn divide-series [dividend-target divisor-target]
+  (str "divideSeries(" dividend-target "," divisor-target ")"))
