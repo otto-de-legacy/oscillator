@@ -33,10 +33,11 @@
                (vc/plain-graphite-link page-config chart-def url-params)])))
 
 (defn- page-route [page-config chart-def-lookup-fun annotation-event-targets page]
-  (compojure/GET (:url page) {params :params}
+  (compojure/GET (str (:context-path page-config) (:url page)) {params :params}
     (let [url-params (merge (:default-params page-config) params)
           content (build-page page page-config chart-def-lookup-fun annotation-event-targets url-params)]
-      (layout/common :title (:heading page)
+      (layout/common :context-path (:context-path page-config)
+                     :title (:heading page)
                      :pages (:pages page-config)
                      :environments (:environments page-config)
                      :page-identifier (:url page)
