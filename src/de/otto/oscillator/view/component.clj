@@ -35,8 +35,8 @@
 (defn link-to-chart [page-config chart-def chart-name url-params]
   [:div {:class "col"}
    [:h2 chart-name]
-   [:a {:href (str "/detail?" (url/param-string (merge url-params {:detail true
-                                                                   :chart  (name chart-name)})))}
+   [:a {:href (str (:context-path page-config) "/detail?" (url/param-string (merge url-params {:detail true
+                                                                                               :chart  (name chart-name)})))}
     (rickshaw-svg page-config chart-def :no-annotation url-params)]])
 
 (defn image [{:keys [heading src]}]

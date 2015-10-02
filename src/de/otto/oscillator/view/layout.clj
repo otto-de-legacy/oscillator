@@ -3,10 +3,10 @@
             [de.otto.oscillator.view.navigation :as link]
             [de.otto.oscillator.util.graphite-url :as url]))
 
-(defn- page-navigation [pages-def page-identifier url-params]
+(defn- page-navigation [context-path pages-def page-identifier url-params]
   [:ul {:class "page"}
    (for [page pages-def]
-     [:li (link/page-link :path (:url page)
+     [:li (link/page-link :path (str context-path (:url page))
                           :is-active (= (:url page) page-identifier)
                           :url-params url-params
                           :title (:name page))])])
@@ -16,10 +16,10 @@
    (for [environment environments]
      [:li (link/nav-link url-params {:env (:key environment)} (:name environment))])])
 
-(defn- main-navigation [pages-def environments-def page-identifier url-params]
+(defn- main-navigation [context-path pages-def environments-def page-identifier url-params]
   [:nav {:class "top"}
    (env-navigation environments-def url-params)
-   (page-navigation pages-def page-identifier url-params)
+   (page-navigation context-path pages-def page-identifier url-params)
    [:ul {:class "resolution"}
     [:li [:span {:class "descr"} "DATA RES:"]]
     [:li (link/nav-link url-params {:resolution "1min"} "1MIN")]
@@ -56,36 +56,38 @@
 
     [:li (link/nav-link-vertical-button url-params {:until "-1min"} "0")]]])
 
-(def css-files
-  ["/stylesheets/rickshaw/layout.css"
-   "/stylesheets/rickshaw/graph.css"
-   "/stylesheets/rickshaw/detail.css"
-   "/stylesheets/rickshaw/legend.css"
-   "/stylesheets/rickshaw/annotations.css"
-   "/stylesheets/base.css"
-   "/stylesheets/navigation.css"
-   "/stylesheets/button.css"])
+(defn css-files [context-path]
+  (map #(str context-path %)
+       ["/stylesheets/rickshaw/layout.css"
+        "/stylesheets/rickshaw/graph.css"
+        "/stylesheets/rickshaw/detail.css"
+        "/stylesheets/rickshaw/legend.css"
+        "/stylesheets/rickshaw/annotations.css"
+        "/stylesheets/base.css"
+        "/stylesheets/navigation.css"
+        "/stylesheets/button.css"]))
 
-(def js-files
-  ["/javascript/vendor/d3.v3.js"
-   "/javascript/vendor/jquery-2.1.4.min.js"
-   "/javascript/vendor/rickshaw.js"
-   "/javascript/gen/oscillator.js"])
+(defn js-files [context-path]
+  (map #(str context-path %)
+       ["/javascript/vendor/d3.v3.js"
+        "/javascript/vendor/jquery-2.1.4.min.js"
+        "/javascript/vendor/rickshaw.js"
+        "/javascript/gen/oscillator.js"]))
 
-(defn common [& {:keys [title pages environments page-identifier add-js-files add-css-files url-params content]}]
+(defn common [& {:keys [context-path title pages environments page-identifier add-js-files add-css-files url-params content]}]
   (h/html5
     [:head
      [:meta {:charset "utf-8"}]
      [:meta {:http-equiv "X-UA-Compatible"
              :content    "IE=edge,chrome=1"}]
      [:title title]
-     [:link {:rel "icon" :type "image/png" :sizes "32x32" :href "/favicon-32x32.png"}]
-     [:link {:rel "icon" :type "image/png" :sizes "96x96" :href "/favicon-96x96.png"}]
-     [:link {:rel "icon" :type "image/png" :sizes "16x16" :href "/favicon-16x16.png"}]
-     (apply h/include-css (flatten (conj css-files add-css-files)))
-     (apply h/include-js (flatten (conj js-files add-js-files)))]
+     [:link {:rel "icon" :type "image/png" :sizes "32x32" :href (str context-path "/favicon-32x32.png")}]
+     [:link {:rel "icon" :type "image/png" :sizes "96x96" :href (str context-path "/favicon-96x96.png")}]
+     [:link {:rel "icon" :type "image/png" :sizes "16x16" :href (str context-path "/favicon-16x16.png")}]
+     (apply h/include-css (flatten (conj (css-files context-path) add-css-files)))
+     (apply h/include-js (flatten (conj (js-files context-path) add-js-files)))]
     [:body
-     (main-navigation pages environments page-identifier url-params)
+     (main-navigation context-path pages environments page-identifier url-params)
      [:header
       [:h1 title]]
      (time-navigation-from url-params)

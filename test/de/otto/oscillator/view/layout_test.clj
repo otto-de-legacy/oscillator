@@ -14,9 +14,9 @@
         (is (= [:ul {:class "page"}
                 (list [:li "MONGO-page-link"]
                       [:li "JVM-page-link"])]
-               (page-navigation pages "/" {}))))
+               (page-navigation "" pages "/" {}))))
       (testing "it marks active page link"
         (is (= [:ul {:class "page"}
                 (list [:li "MONGO-page-link"]
                       [:li "JVM-active-page-link"])]
-               (page-navigation pages "/jvm" {})))))))
+               (page-navigation "" pages "/jvm" {})))))))
