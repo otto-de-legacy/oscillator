@@ -48,6 +48,7 @@ You just have to provide some information about the page and what charts should 
                   :resolution "10min"
                   :ymax-mode  "fix"}
  :replace-rules  {}                                    ;; see -> Replace Rules
+ :context-path "/path"                                 ;; an optional context-path
  :add-js-files   ["/javascript/your-additional.js"]    ;; additional javascript files
  :add-css-files  ["/stylesheets/your-additional.css"]} ;; additional stylesheet files
 ```
