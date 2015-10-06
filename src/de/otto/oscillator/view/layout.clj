@@ -57,22 +57,22 @@
     [:li (link/nav-link-vertical-button url-params {:until "-1min"} "0")]]])
 
 (defn css-files [context-path]
-  (map #(str context-path %)
-       ["/stylesheets/rickshaw/layout.css"
-        "/stylesheets/rickshaw/graph.css"
-        "/stylesheets/rickshaw/detail.css"
-        "/stylesheets/rickshaw/legend.css"
-        "/stylesheets/rickshaw/annotations.css"
-        "/stylesheets/base.css"
-        "/stylesheets/navigation.css"
-        "/stylesheets/button.css"]))
+  (into [] (map #(str context-path %)
+                ["/stylesheets/rickshaw/layout.css"
+                 "/stylesheets/rickshaw/graph.css"
+                 "/stylesheets/rickshaw/detail.css"
+                 "/stylesheets/rickshaw/legend.css"
+                 "/stylesheets/rickshaw/annotations.css"
+                 "/stylesheets/base.css"
+                 "/stylesheets/navigation.css"
+                 "/stylesheets/button.css"])))
 
 (defn js-files [context-path]
-  (map #(str context-path %)
-       ["/javascript/vendor/d3.v3.js"
-        "/javascript/vendor/jquery-2.1.4.min.js"
-        "/javascript/vendor/rickshaw.js"
-        "/javascript/gen/oscillator.js"]))
+  (into [] (map #(str context-path %)
+                ["/javascript/vendor/d3.v3.js"
+                 "/javascript/vendor/jquery-2.1.4.min.js"
+                 "/javascript/vendor/rickshaw.js"
+                 "/javascript/gen/oscillator.js"])))
 
 (defn common [& {:keys [context-path title pages environments page-identifier add-js-files add-css-files url-params content]}]
   (h/html5
