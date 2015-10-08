@@ -30,3 +30,6 @@
 
 (defn divide-series [dividend-target divisor-target]
   (str "divideSeries(" dividend-target "," divisor-target ")"))
+
+(defn scale [target factor]
+  (str "scale("target "," factor ")"))
