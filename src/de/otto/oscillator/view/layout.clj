@@ -72,7 +72,8 @@
                 ["/javascript/vendor/d3.v3.js"
                  "/javascript/vendor/jquery-2.1.4.min.js"
                  "/javascript/vendor/rickshaw.js"
-                 "/javascript/gen/oscillator.js"])))
+                 "/javascript/gen/oscillator.js"
+                 "/javascript/piechart.js"])))
 
 (defn common [& {:keys [context-path title pages environments page-identifier add-js-files add-css-files url-params content]}]
   (h/html5

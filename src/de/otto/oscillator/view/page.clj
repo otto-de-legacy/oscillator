@@ -1,7 +1,8 @@
 (ns de.otto.oscillator.view.page
   (:require [compojure.core :as compojure]
             [de.otto.oscillator.view.layout :as layout]
-            [de.otto.oscillator.view.component :as vc]))
+            [de.otto.oscillator.view.component :as vc]
+            [clojure.data.json :as json]))
 
 (def build-in-pages
   [{:url     "/detail"
@@ -11,6 +12,11 @@
 (defn- chart-def [chart-def-lookup-fun chart-name env]
   ((keyword chart-name) (chart-def-lookup-fun env)))
 
+(defn render-pie-chart [{:keys [title data-fn]} page-config url-params]
+  [:div {:class "col"}
+   [:h2 title]
+   [:div {:class "piechart" :data-piechart (json/write-str (data-fn page-config url-params))}]])
+
 (defn- build-tile [{:keys [type params]} page-config chart-def-lookup-fun url-params]
   (case type
     :chart (let [chart-name (:chart-name params)
@@ -19,7 +25,8 @@
     :image (vc/image params)
     :number (vc/number params)
     :plain-html params
-    :html-fn (params page-config url-params)))
+    :html-fn (params page-config url-params)
+    :pie-chart (render-pie-chart params page-config url-params)))
 
 (defn- build-page [page page-config chart-def-lookup-fun annotation-event-targets url-params]
   (case (:type page)

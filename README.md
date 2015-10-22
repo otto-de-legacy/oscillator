@@ -76,7 +76,11 @@ Pages are defined in a list of hash-maps like this:
              :params {:src     "nikola-tesla.png"
                       :heading "NIKOLA TESLA"}}
             {:type   :html-fn
-             :params (fn [] [:div [:h2 "CUSTOM HTML"]])}
+             :params (fn [page-config url-params] [:div [:h2 "CUSTOM HTML"]])}
+            {:type   :pie-chart
+                      :params {:title   "MY-PIE"
+                              :data-fn (fn [page-config url-params] [{:text "first" :value 34}
+                                                                    {:text "second" :value 14}])}}
             {:type   :number
              :params {:heading "Awesomeness"
                       :descr   "OVER"
