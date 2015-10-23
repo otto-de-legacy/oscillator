@@ -4,14 +4,14 @@ function buildInputFrom(inputMap) {
     });
 }
 
-function printPieChart(input, targetDiv) {
+function printPieChart(input, colors, targetDiv) {
 
     var width = 385,
         height = 200,
         radius = Math.min(width, height) / 2;
 
     var color = d3.scale.ordinal()
-        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+        .range(colors);
 
     var arc = d3.svg.arc()
         .outerRadius(radius - 10)
@@ -53,10 +53,32 @@ function printPieChart(input, targetDiv) {
 
 }
 
+function hexVal(aval) {
+    var hex = aval.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function gray(aval) {
+    return "#" + hexVal(aval) + hexVal(aval) + hexVal(aval);
+}
+
+function getGrayScaleColors(numColors){
+    var grayScale = [];
+    var step = parseInt(230 / numColors);
+    for(var i = 250; i > 20;i-=step){
+        grayScale.push(gray(i));
+    }
+    return grayScale;
+}
+
 $(function () {
     var allPieCharts = d3.selectAll('div.piechart').each(function(d) {
         var currentChart = d3.select(this);
-        var currentChartDara = JSON.parse(currentChart.attr('data-piechart'));
-        printPieChart(currentChartDara, currentChart);
+        var currentChartData = JSON.parse(currentChart.attr('data-piechart'));
+        var currentChartColors = JSON.parse(currentChart.attr('data-piechart-colors'));
+        if(!currentChartColors){
+            currentChartColors = getGrayScaleColors(currentChartData.length);
+        }
+        printPieChart(currentChartData, currentChartColors, currentChart);
     })
 });

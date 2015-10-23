@@ -12,10 +12,12 @@
 (defn- chart-def [chart-def-lookup-fun chart-name env]
   ((keyword chart-name) (chart-def-lookup-fun env)))
 
-(defn render-pie-chart [{:keys [title data-fn]} page-config url-params]
+(defn render-pie-chart [{:keys [title data-fn colors]} page-config url-params]
   [:div {:class "col"}
    [:h2 title]
-   [:div {:class "piechart" :data-piechart (json/write-str (data-fn page-config url-params))}]])
+   [:div {:class                "piechart"
+          :data-piechart-colors (json/write-str colors)
+          :data-piechart        (json/write-str (data-fn page-config url-params))}]])
 
 (defn- build-tile [{:keys [type params]} page-config chart-def-lookup-fun url-params]
   (case type
