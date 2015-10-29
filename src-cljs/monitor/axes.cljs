@@ -1,18 +1,21 @@
 (ns monitor.axes
-  (:require [dommy.core :refer-macros [sel sel1]]))
+  (:require [dommy.core :refer-macros [sel sel1]]
+            [goog.i18n.DateTimeFormat :as dtf]
+            [goog.i18n.NumberFormat :as nf]))
 
 (defn format-number [num]
-  (clojure.string/replace (str num)
-                          #"(\d)(?=(\d{3})+(?!\d))"
-                          "$1,"))
+  (let [fmt (goog.i18n.NumberFormat. goog.i18n.NumberFormat.Format.DECIMAL)]
+    (.format fmt num)))
+
+(defn format-time [datetime]
+  (let [fmt (goog.i18n.DateTimeFormat. "HH:mm:ss dd.MM.yyyy")]
+    (.format fmt (js/Date. (* datetime 1000)))))
 
 (defn set-axes [graph el]
   (Rickshaw.Graph.HoverDetail.
     (clj->js {:graph      graph
-              :yFormatter (fn [y]
-                            (if (nil? y)
-                              y
-                              (format-number y)))}))
+              :yFormatter (fn [y] (when y (format-number y)))
+              :xFormatter (fn [x] (when x (format-time x)))}))
   (Rickshaw.Graph.Axis.Time.
     (clj->js {:graph       graph
               :element     (sel1 el :.x_axis)
