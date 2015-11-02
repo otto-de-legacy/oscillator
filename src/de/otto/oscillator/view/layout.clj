@@ -18,8 +18,8 @@
 
 (defn- main-navigation [context-path pages-def environments-def page-identifier url-params]
   [:nav {:class "top"}
-   (env-navigation environments-def url-params)
    (page-navigation context-path pages-def page-identifier url-params)
+   (env-navigation environments-def url-params)
    [:ul {:class "resolution"}
     [:li [:span {:class "descr"} "DATA RES:"]]
     [:li (link/nav-link url-params {:resolution "1min"} "1MIN")]
@@ -41,8 +41,10 @@
     [:li (link/nav-link-scroll-button url-params :from +1 ">")]
     [:li (link/nav-link-scroll-button url-params :from +24 ">>")]
 
-    [:li (link/nav-link-vertical-button url-params {:from "-6h"} "-6h")]
-    [:li (link/nav-link-vertical-button url-params {:from "-24h"} "-24h")]]])
+    [:li (link/nav-link-vertical-button url-params {:from "-1h" :resolution "1min"} "-1h")]
+    [:li (link/nav-link-vertical-button url-params {:from "-6h" :resolution "10min"} "-6h")]
+    [:li (link/nav-link-vertical-button url-params {:from "-24h" :resolution "30min"} "-24h")]
+    [:li (link/nav-link-vertical-button url-params {:from "-96h" :resolution "1hour"} "-4d")]]])
 
 (defn- time-navigation-until [url-params]
   [:nav {:class "side right"}
