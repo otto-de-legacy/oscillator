@@ -22,20 +22,15 @@
     opacity: 0.5;
 }
 
-.button.back {
-    color: #3498db;
-    border-color: #3498db;
-}
-
 .button .vertical {
-    width: 100px;
+    width: 80px;
     line-height: normal;
     -webkit-transform-origin: top left;
     -moz-transform-origin: top left;
     -o-transform-origin: top left;
-    -webkit-transform:rotate(-90deg) translate(-100px,3px);
-    -moz-transform:rotate(-90deg) translate(-100px,3px);
-    -o-transform: rotate(-90deg) translate(-100px,3px);
+    -webkit-transform:rotate(-90deg) translate(-80px,3px);
+    -moz-transform:rotate(-90deg) translate(-80px,3px);
+    -o-transform: rotate(-90deg) translate(-80px,3px);
 }
 
 .button.scroll {
@@ -105,7 +100,7 @@ nav ul.time li .button.active.time {
 
 nav.side .button {
     width: 40px;
-    height: 100px;
+    height: 80px;
 
-    line-height: 100px;
+    line-height: 80px;
 }
