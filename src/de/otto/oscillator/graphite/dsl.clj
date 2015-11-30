@@ -33,3 +33,9 @@
 
 (defn scale [target factor]
   (str "scale("target "," factor ")"))
+
+(defn scale-to-seconds [target seconds]
+  (str "scaleToSeconds(" target "," seconds ")"))
+
+(defn time-shift [target shift]
+  (str "timeShift(" target "," shift ")"))
