@@ -38,4 +38,4 @@
   (str "scaleToSeconds(" target "," seconds ")"))
 
 (defn time-shift [target shift]
-  (str "timeShift(" target "," shift ")"))
+  (str "timeShift(" target ",\"" shift "\")"))
