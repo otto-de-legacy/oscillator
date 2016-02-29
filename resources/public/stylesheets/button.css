@@ -19,7 +19,9 @@
     -ms-box-sizing:border-box;
     box-sizing:border-box;
 
-    opacity: 0.5;
+    overflow: hidden;
+
+    opacity: 0.33;
 }
 
 .button .vertical {
