@@ -7,7 +7,7 @@
             :scm {:name "git"
                   :url  "https://github.com/otto-de/oscillator"}
             :plugins [[lein-cljsbuild "1.0.6"]]
-            :dependencies [[org.clojure/clojure "1.7.0"]
+            :dependencies [[org.clojure/clojure "1.8.0"]
                            [compojure "1.3.4"]
                            [hiccup "1.0.5"]
                            [org.clojure/data.json "0.2.6"]]
