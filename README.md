@@ -46,7 +46,8 @@ You just have to provide some information about the page and what charts should 
                   :from       "-24h"
                   :until      "-1min"
                   :resolution "10min"
-                  :ymax-mode  "fix"}
+                  :ymax-mode  "fix"
+                  :stay       "false"}
  :replace-rules  {}                                    ;; see -> Replace Rules
  :context-path "/path"                                 ;; an optional context-path
  :add-js-files   ["/javascript/your-additional.js"]    ;; additional javascript files
