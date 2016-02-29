@@ -80,6 +80,15 @@ nav ul.ymax-mode .descr {
     color: #f39c12;
 }
 
+nav ul.stay li a {
+    color: #9b59b6;
+    border-color: #9b59b6;
+}
+nav ul.stay li a.active {
+    color: #2c3e50;
+    background-color: #9b59b6;
+}
+
 nav ul.time li .button {
     color: #3498db;
     border-color: #3498db;

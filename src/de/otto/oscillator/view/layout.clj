@@ -29,7 +29,12 @@
    [:ul {:class "ymax-mode"}
     [:li [:span {:class "descr"} "YMAX:"]]
     [:li (link/nav-link url-params {:ymax-mode "free"} "FREE")]
-    [:li (link/nav-link url-params {:ymax-mode "fix"} "FIX")]]])
+    [:li (link/nav-link url-params {:ymax-mode "fix"} "FIX")]]
+   [:ul {:class "stay"}
+    [:li {:title "In STAY mode, the monitor will stay on the selected page indefinitely"}
+     (link/nav-link url-params {:stay "true"} "STAY")]
+    [:li {:title "In LEAVE mode, the monitor will go back to index page after some time"} 
+     (link/nav-link url-params {:stay "false"} "LEAVE")]]])
 
 (defn- time-navigation-from [url-params]
   [:nav {:class "side"}

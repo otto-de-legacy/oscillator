@@ -1,4 +1,4 @@
-(defproject de.otto/oscillator "0.2.19"
+(defproject de.otto/oscillator "0.2.20-SNAPSHOT"
             :description "A Clojure library that lets you create dashboards with
                          interactive charts to monitor applications in multiple environments."
             :url "https://github.com/otto-de/oscillator"
