@@ -5,17 +5,28 @@
 
 (def jquery (js* "$"))
 
-(defn update-number [el]
+(defn first-datapoint [data]
+  (-> (first data)
+      (aget "datapoints")
+      (ffirst)))
+
+(defn formatter-string [el]
+  (or (.getAttribute el "data-formatter") ".4s"))
+
+(defn update-number [el data]
+  (let [formatter (.format js/d3 (formatter-string el))]
+    (->> (first-datapoint data)
+         (formatter)
+         (d/set-html! (sel1 el :.focus)))))
+
+(defn fetch-and-update-number [el]
   (.get jquery (.getAttribute el "data-url")
-        (fn [data]
-          (->> (first (first (aget (first data) "datapoints")))
-              (d/set-html! (first (sel el :.focus))))
-          "json")))
+        (partial update-number el)))
 
 (defn refresh-number [number]
   (js/setInterval
     (fn []
-      (update-number number))
+      (fetch-and-update-number number))
     3000))
 
 (defn on-document-ready []
@@ -24,6 +35,3 @@
 
 (.addEventListener js/document "DOMContentLoaded"
                    on-document-ready)
-
-
-
