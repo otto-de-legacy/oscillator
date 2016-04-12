@@ -44,8 +44,15 @@
    [:h2 heading]
    [:img {:src src}]])
 
-(defn number [{:keys [heading descr num]}]
-  [:div {:class "col number"}
-   [:h2 heading]
-   [:div {:class "descr"} descr]
-   [:div {:class "focus"} num]])
+(defn number [{:keys [heading descr num target]} page-config url-params]
+  (if (nil? target)
+    [:div {:class "col number"}
+     [:h2 heading]
+     [:div {:class "descr"} descr]
+     [:div {:class "focus"} num]]
+    (let [chart-def (merge {:target target} url-params)]
+      [:div {:class    "col number target"
+             :data-url (url/json-url page-config chart-def)}
+       [:h2 heading]
+       [:div {:class "descr"} descr]
+       [:div {:class "focus"} num]])))

@@ -86,6 +86,10 @@ Pages are defined in a list of hash-maps like this:
              :params {:heading "Awesomeness"
                       :descr   "OVER"
                       :num     9000}}
+            {:type   :number
+             :params {:heading "Offset"
+                      :descr   "Last offset for stats"
+                      :target  (dsl/max-series "app-serv-#{env}.*.metrics.stats.offset")}}
             {:type   :plain-html
              :params [:div {:class "col"}
                       [:h2 "CUSTOM HTML"]

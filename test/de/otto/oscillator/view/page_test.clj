@@ -33,6 +33,18 @@
               [:h2 "somehead"]
               [:div {:class "descr"} "some-descr"]
               [:div {:class "focus"} 123]]
+             (#'page/build-tile a-tile-config nil nil nil)))))
+
+  (testing "should render a number with target"
+    (let [a-tile-config {:type   :number
+                         :params {:heading "somehead"
+                                  :descr   "some-descr"
+                                  :target  "some.target"}}]
+      (is (= [:div {:class "col number target"
+                    :data-url "render/?target=some.target&format=json"}
+              [:h2 "somehead"]
+              [:div {:class "descr"} "some-descr"]
+              [:div {:class "focus"} nil]]
              (#'page/build-tile a-tile-config nil nil nil))))))
 
 

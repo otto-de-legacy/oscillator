@@ -25,7 +25,7 @@
                  chart-def (chart-def chart-def-lookup-fun chart-name (:env url-params))]
              (vc/link-to-chart page-config chart-def chart-name url-params))
     :image (vc/image params)
-    :number (vc/number params)
+    :number (vc/number params page-config url-params)
     :plain-html params
     :html-fn (params page-config url-params)
     :pie-chart (render-pie-chart params page-config url-params)))
