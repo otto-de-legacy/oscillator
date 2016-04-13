@@ -8,7 +8,8 @@
 (defn first-datapoint [data]
   (-> (first data)
       (aget "datapoints")
-      (ffirst)))
+      (last)
+      (first)))
 
 (defn formatter-string [el]
   (or (.getAttribute el "data-formatter") ".4s"))
@@ -19,19 +20,20 @@
          (formatter)
          (d/set-html! (sel1 el :.focus)))))
 
-(defn fetch-and-update-number [el]
-  (.get jquery (.getAttribute el "data-url")
-        (partial update-number el)))
+(defn fetch-and-update-number [elements]
+  (doseq [el elements]
+    (.get jquery (.getAttribute el "data-url")
+          (partial update-number el))))
 
-(defn refresh-number [number]
+(defn refresh-number [elements]
+  (fetch-and-update-number elements)
   (js/setInterval
     (fn []
-      (fetch-and-update-number number))
+      (fetch-and-update-number elements))
     3000))
 
 (defn on-document-ready []
-  (doseq [el (sel :.col.number.target)]
-    (refresh-number el)))
+  (refresh-number (sel :.col.number.target)))
 
 (.addEventListener js/document "DOMContentLoaded"
                    on-document-ready)
