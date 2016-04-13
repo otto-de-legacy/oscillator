@@ -18,7 +18,7 @@
   (testing "should render an image"
     (let [a-tile-config {:type   :image
                          :params {:heading "somehead"
-                                  :src "some-src"}}]
+                                  :src     "some-src"}}]
       (is (= [:div {:class "col image"}
               [:h2 "somehead"]
               [:img {:src "some-src"}]]
@@ -27,8 +27,8 @@
   (testing "should render a number"
     (let [a-tile-config {:type   :number
                          :params {:heading "somehead"
-                                  :descr "some-descr"
-                                  :num 123}}]
+                                  :descr   "some-descr"
+                                  :num     123}}]
       (is (= [:div {:class "col number"}
               [:h2 "somehead"]
               [:div {:class "descr"} "some-descr"]
@@ -40,8 +40,9 @@
                          :params {:heading "somehead"
                                   :descr   "some-descr"
                                   :target  "some.target"}}]
-      (is (= [:div {:class "col number target"
-                    :data-url "render/?target=some.target&format=json"}
+      (is (= [:div {:class          "col number target"
+                    :data-url       "render/?target=some.target&format=json"
+                    :data-formatter nil}
               [:h2 "somehead"]
               [:div {:class "descr"} "some-descr"]
               [:div {:class "focus"} nil]]
