@@ -13,6 +13,9 @@
 (defn group [& targets]
   (str "group(" (cs/join "," targets) ")"))
 
+(defn most-deviant [& targets]
+  (str "mostDeviant(" (cs/join "," targets) ")"))
+
 (defn summarize [target, timespan]
   (str "summarize(" target ",\"" timespan "\",\"avg\")"))
 
