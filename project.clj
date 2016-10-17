@@ -6,9 +6,9 @@
                       :url  "http://www.apache.org/license/LICENSE-2.0.html"}
             :scm {:name "git"
                   :url  "https://github.com/otto-de/oscillator"}
-            :plugins [[lein-cljsbuild "1.1.4"]]
+            :plugins [[lein-cljsbuild "1.0.6"]]
             :dependencies [[org.clojure/clojure "1.8.0"]
-                           [compojure "1.5.1"]
+                           [compojure "1.3.4"]
                            [hiccup "1.0.5"]
                            [org.clojure/data.json "0.2.6"]]
             :lein-release {:deploy-via :clojars}
@@ -20,9 +20,9 @@
                                                       :optimizations :whitespace
                                                       :pretty-print  true}}}}
             :hooks [leiningen.cljsbuild]
-            :profiles {:provided {:dependencies [[org.clojure/clojurescript "1.9.229"]
-                                                 [cljs-ajax "0.5.8"]
+            :profiles {:provided {:dependencies [[org.clojure/clojurescript "1.7.48"]
+                                                 [cljs-ajax "0.3.13"]
                                                  [prismatic/dommy "1.1.0"]
-                                                 [hipo "0.5.2"]]}
+                                                 [hipo "0.4.0"]]}
                        :dev      {:plugins [[lein-release/lein-release "1.0.9"]]}
                        :uberjar  {:aot :all}})
