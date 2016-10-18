@@ -14,7 +14,7 @@ This library was developed with Graphite as a data provider in mind.
 ![Example Dashboard with charts, custom tiles, images and numbers](doc/oscillator.png)
 
 [![Build Status](https://travis-ci.org/otto-de/oscillator.svg?branch=master)](https://travis-ci.org/otto-de/oscillator)
-[![Dependencies Status](http://jarkeeper.com/otto-de/tesla-microservice/status.svg)](http://jarkeeper.com/otto-de/oscillator)
+[![Dependencies Status](http://jarkeeper.com/otto-de/oscillator/status.svg)](http://jarkeeper.com/otto-de/oscillator)
 ## Usage
 
 [![Clojars Project](http://clojars.org/de.otto/oscillator/latest-version.svg)](http://clojars.org/de.otto/oscillator)
