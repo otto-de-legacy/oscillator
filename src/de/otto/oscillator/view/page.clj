@@ -22,8 +22,9 @@
 (defn- build-tile [{:keys [type params]} page-config chart-def-lookup-fun url-params]
   (case type
     :chart (let [chart-name (:chart-name params)
+                 title (:title params)
                  chart-def (chart-def chart-def-lookup-fun chart-name (:env url-params))]
-             (vc/link-to-chart page-config chart-def chart-name url-params))
+             (vc/link-to-chart page-config chart-def chart-name title url-params))
     :image (vc/image params)
     :number (vc/number params page-config url-params)
     :plain-html params

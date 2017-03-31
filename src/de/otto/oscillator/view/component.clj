@@ -32,9 +32,9 @@
      (if (url-params :detail)
        [:div {:class "legend"}])]))
 
-(defn link-to-chart [page-config chart-def chart-name url-params]
+(defn link-to-chart [page-config chart-def chart-name title url-params]
   [:div {:class "col"}
-   [:h2 chart-name]
+   [:h2 (or title chart-name)]
    [:a {:href (str (:context-path page-config) "/detail?" (url/param-string (merge url-params {:detail true
                                                                                                :chart  (name chart-name)})))}
     (rickshaw-svg page-config chart-def :no-annotation url-params)]])
